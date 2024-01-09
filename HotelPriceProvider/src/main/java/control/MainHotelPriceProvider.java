@@ -28,6 +28,6 @@ public class MainHotelPriceProvider {
 		XoteloSupplier xoteloSupplier = new XoteloSupplier("Xotelo");
 		JMSHotelPriceSender hotelPriceSender = new JMSHotelPriceSender(brokerURL, topicName);
 		Controller controller = new Controller(hotels, xoteloSupplier, hotelPriceSender);
-		controller.executionTimer(30);
+		controller.executionTimer(6*60);
 	}
 }

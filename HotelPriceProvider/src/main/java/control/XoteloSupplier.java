@@ -58,7 +58,7 @@ public class XoteloSupplier implements HotelPriceSupplier {
 	}
 
 	private String urlBuilder(String hotelKey, String checkInDate, String checkOutDate) {
-		return  String.format("https://data.xotelo.com/api/rates?hotel_key=%s&chk_in=%s&chk_out=%s&currency=EUR", hotelKey, checkInDate, checkOutDate);
+		return String.format("https://data.xotelo.com/api/rates?hotel_key=%s&chk_in=%s&chk_out=%s&currency=EUR", hotelKey, checkInDate, checkOutDate);
 	}
 
 	private Instant stringToInstant(String dateString) {

@@ -5,7 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import java.util.List;
 
-public class TopicEventSubscriber implements EventSupplier{
+public class TopicEventSubscriber implements EventSupplier {
 
 	private final String brokerURL;
 	private final List<String> topicNames;

@@ -18,7 +18,7 @@ public class SqlDatamartManager implements DatamartManagerBuilder {
 
 	@Override
 	public void updateDatamart(String event, String topicName) {
-		synchronized (lock){
+		synchronized (lock) {
 			try (Connection connection = this.connect(); Statement statement = connection.createStatement()) {
 				if (topicName.equals("hotel.Prices")) {
 					HotelPriceSqlDatamart.updateHotel(statement, event);
@@ -36,7 +36,7 @@ public class SqlDatamartManager implements DatamartManagerBuilder {
 		String island = filterParameters.get(0);
 		String checkIn = filterParameters.get(1);
 		String checkOut = filterParameters.get(2);
-		synchronized (lock){
+		synchronized (lock) {
 			try (Connection connection = this.connect()) {
 				String locationResult = BestWeatherLocationFinder.findLocation(connection, island, checkIn, checkOut);
 				HotelFinder.findHotel(connection, locationResult, checkIn, checkOut);

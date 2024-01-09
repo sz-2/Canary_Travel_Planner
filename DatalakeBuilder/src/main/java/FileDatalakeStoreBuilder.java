@@ -49,7 +49,7 @@ public class FileDatalakeStoreBuilder implements DatalakeStoreBuilder {
 	}
 
 	private String pathBuilder(String event, String topicName) {
-		return String.format("%s/datalake/eventstore/%s/%s/%s.events", this.directory, topicName,this.getSS(event), this.getTS(event));
+		return String.format("%s/datalake/eventstore/%s/%s/%s.events", this.directory, topicName, this.getSS(event), this.getTS(event));
 	}
 }
 

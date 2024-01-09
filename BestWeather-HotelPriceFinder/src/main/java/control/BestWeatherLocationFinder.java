@@ -1,6 +1,9 @@
 package control;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class BestWeatherLocationFinder {
@@ -29,6 +32,7 @@ public class BestWeatherLocationFinder {
 			throw new RuntimeException(ex);
 		}
 	}
+
 	private static void printWeatherResult(ResultSet resultSet) throws SQLException {
 		String location = resultSet.getString("location");
 		double avgTemperature = resultSet.getDouble("avg_temperature");

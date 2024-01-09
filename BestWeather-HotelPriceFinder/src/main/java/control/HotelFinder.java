@@ -18,7 +18,6 @@ public class HotelFinder {
 				"HAVING COUNT(DISTINCT date) = ?";
 
 
-
 		try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 			preparedStatement.setString(1, location);
 			preparedStatement.setString(2, checkIn);
@@ -30,14 +29,14 @@ public class HotelFinder {
 	}
 
 	private static void printHotelResult(ResultSet resultSet) throws SQLException {
-		if(resultSet.next()) {
-			do{
+		if (resultSet.next()) {
+			do {
 				String hotelName = resultSet.getString("hotelName");
 				String locationR = resultSet.getString("location");
 				double precioTotalEstancia = resultSet.getDouble("totalAccommodationCost");
 				System.out.println("Hotel: " + hotelName + ", location: " + locationR + ", totalAccommodationCost: " + precioTotalEstancia);
 			} while (resultSet.next());
-		}else{
+		} else {
 			System.out.println("Currently, no available hotels. Please try again later or consider another destination.");
 		}
 	}

@@ -17,15 +17,26 @@ public class ClientRequest {
 		this.datamartManagerBuilder = datamartManagerBuilder;
 	}
 
-	public void execute(){
-		do{
+	private static boolean askUserToContinue(Scanner scanner) {
+		System.out.print("Do you want to continue? (yes/no): ");
+		String userInput = scanner.nextLine().toLowerCase();
+		if (userInput.equals("no")) {
+			System.out.println("Exiting the application.");
+			return false;
+		}
+		System.out.println("------------------------------------------------------------------------");
+		return true;
+	}
+
+	public void execute() {
+		do {
 			datamartManagerBuilder.readFromDatamart(this.getQueryParameters());
-		}while (askUserToContinue(scanner));
+		} while (askUserToContinue(scanner));
 		scanner.close();
 		System.exit(0);
 	}
 
-	private List<String> getQueryParameters(){
+	private List<String> getQueryParameters() {
 		List<String> clientRequest = new ArrayList<>();
 		System.out.println("Welcome to Canary Islands Travel Planner");
 		clientRequest.add(captureAndValidateDestiny());
@@ -66,16 +77,5 @@ public class ClientRequest {
 			}
 		} while (!destinosDisponibles.contains(destino));
 		return destino;
-	}
-
-	private static boolean askUserToContinue(Scanner scanner) {
-		System.out.print("Do you want to continue? (yes/no): ");
-		String userInput = scanner.nextLine().toLowerCase();
-		if (userInput.equals("no")) {
-			System.out.println("Exiting the application.");
-			return false;
-		}
-		System.out.println("------------------------------------------------------------------------");
-		return true;
 	}
 }

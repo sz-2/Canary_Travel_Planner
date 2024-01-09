@@ -10,7 +10,7 @@ public class TopicEventSubscriber implements Subscriber {
 	private final List<String> clientsID;
 	private final FileDatalakeStoreBuilder fileEventStore;
 
-	public TopicEventSubscriber(String brokerURL, List<String> topicNames,  List<String> clientsID, FileDatalakeStoreBuilder fileEventStore) {
+	public TopicEventSubscriber(String brokerURL, List<String> topicNames, List<String> clientsID, FileDatalakeStoreBuilder fileEventStore) {
 		this.brokerURL = brokerURL;
 		this.topicNames = topicNames;
 		this.clientsID = clientsID;

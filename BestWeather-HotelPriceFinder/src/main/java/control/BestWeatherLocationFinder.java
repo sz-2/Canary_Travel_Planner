@@ -1,6 +1,8 @@
 package control;
 
 import java.sql.*;
+
+
 public class BestWeatherLocationFinder {
 	public static String findLocation(Connection connection, String island, String checkIn, String checkOut) {
 		String locationResult = null;

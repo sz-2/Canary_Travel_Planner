@@ -21,6 +21,7 @@ public class ClientRequest {
 		do{
 			datamartManagerBuilder.readFromDatamart(this.getQueryParameters());
 		}while (askUserToContinue(scanner));
+		scanner.close();
 		System.exit(0);
 	}
 
@@ -40,7 +41,7 @@ public class ClientRequest {
 				String inputDate = scanner.nextLine();
 				LocalDate parsedDate = LocalDate.parse(inputDate);
 				LocalDate today = LocalDate.now();
-				LocalDate fourDaysAhead = today.plusDays(4);
+				LocalDate fourDaysAhead = today.plusDays(5);
 
 				if (!(parsedDate.isBefore(today) || parsedDate.isAfter(fourDaysAhead) || (dateType.equals("check-out") && parsedDate.isBefore(LocalDate.parse(clientRequest.get(1)))))) {
 					return inputDate;

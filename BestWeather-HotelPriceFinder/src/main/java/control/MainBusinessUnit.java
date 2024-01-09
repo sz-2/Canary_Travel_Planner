@@ -9,7 +9,6 @@ public class MainBusinessUnit {
 		String dbPath = args[1];
 		List<String> topicNames = List.of("prediction.Weather", "hotel.Prices");
 		List<String> clientID = List.of("123", "789");
-
 		SqlDatamartManager sqlDatamartManager = new SqlDatamartManager(dbPath);
 		TopicEventSubscriber topicEventSubscriber = new TopicEventSubscriber(brokerURL, topicNames, clientID, sqlDatamartManager);
 		topicEventSubscriber.startListening();

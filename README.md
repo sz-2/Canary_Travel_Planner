@@ -41,8 +41,7 @@ to a topic, and various message consumers subscribe to topics from which they wa
 published on a topic are distributed to all subscribed applications. It is a broadcast-type distribution method, where there is a
 one-to-many relationship between the message publisher and its consumers.
 
-### Execution of the program
-
+#### Execution of the program
 This program requires 3 arguments for its execution. Firstly, the API key to connect to the OpenWeatherMap API and obtain meteorological data,
 the URL of the broker to which it will connect and finally the path where the file with the information of the
 locations (locationName, island, latitude, longitude) in order to make requests to the API.
@@ -57,7 +56,10 @@ command: **java -jar YourApp.jar arg1 arg2 arg3**.
 ****
 
 ### Hotel Price Provider
-### Execution of the program
+This Java application is designed to collect information about the prices of a specific hotel for a particular day from different platforms where it is available every six hours. 
+Subsequently, this information will be serialized in JSON format and sent to the topic of a broker.
+
+#### Execution of the program
 This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and finally and secondly the path where the file with the information of the 
 hotels is located (name, location, island, and code) in order to make requests to the API.
 
@@ -74,7 +76,7 @@ command: **java -jar YourApp.jar arg1 arg2**.
 This Java application will systematically store consumed events from a broker in a directory. The events will be stored in the following format, **{YYYYMMDD}.events**,
 where **YYYYMMDD** is the year-month-day obtained from the event's timestamp in which the events associated with a specific day are stored and **.events** is the file extension.
 
-### Execution of the program
+#### Execution of the program
 This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and finally and secondly the path where the datalake will be created and
 event will be stored.
 
@@ -89,7 +91,7 @@ command: **java -jar YourApp.jar arg1 arg2**.
 
 ### Best Weather and Hotel-Price Finder
 
-### Execution of the program
+#### Execution of the program
 This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and finally and secondly the path where the Datamart will be created, 
 it is necessary to specify in that path the name of the datamart that we want to assign and that it ends with the extension **.db**, like this example, **C:/Users/Documents/datamart_name.db**.
 

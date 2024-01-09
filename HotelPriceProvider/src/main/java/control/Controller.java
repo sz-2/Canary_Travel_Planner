@@ -16,16 +16,16 @@ public class Controller {
 	}
 
 	public void execute() {
-		List<String> next5Days = this.generateNext5DaysList();
-		for (Hotel hotel: this.hotels) {
-			for (int i = 0; i < next5Days.size() - 1; i++) {
-				this.hotelPriceStore.saveHotelPrices(this.hotelPriceSupplier.getHotelPrices(hotel, next5Days.get(i), next5Days.get(i + 1)));
+		List<String> next6Days = this.generateNext6DaysList();
+		for (Hotel hotel : this.hotels) {
+			for (int i = 0; i < next6Days.size() - 1; i++) {
+				this.hotelPriceStore.saveHotelPrices(this.hotelPriceSupplier.getHotelPrices(hotel, next6Days.get(i), next6Days.get(i + 1)));
 			}
 		}
 		System.out.println("successfully executed");
 	}
 
-	public List<String> generateNext5DaysList() {
+	public List<String> generateNext6DaysList() {
 		List<String> dateList = new ArrayList<>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {

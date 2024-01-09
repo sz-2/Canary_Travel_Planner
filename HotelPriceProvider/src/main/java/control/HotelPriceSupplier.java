@@ -1,7 +1,8 @@
 package control;
 
-import model.HotelPrice;
 import model.Hotel;
+import model.HotelPrice;
+
 import java.util.List;
 
 public interface HotelPriceSupplier {

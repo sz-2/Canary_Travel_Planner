@@ -4,6 +4,7 @@ import com.google.gson.*;
 import jakarta.jms.*;
 import model.Weather;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
 import java.lang.reflect.Type;
 import java.time.Instant;
 import java.util.List;

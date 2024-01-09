@@ -63,7 +63,7 @@ public class XoteloSupplier implements HotelPriceSupplier {
 		return url;
 	}
 
-	private Instant stringToInstant (String dateString) {
+	private Instant stringToInstant(String dateString) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.parse(dateString, formatter);
 		return localDate.atStartOfDay().toInstant(ZoneOffset.UTC);

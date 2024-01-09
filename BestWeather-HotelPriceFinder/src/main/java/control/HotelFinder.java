@@ -9,26 +9,23 @@ import java.text.SimpleDateFormat;
 
 public class HotelFinder {
 
-	public static void findHotel(Connection connection, String location, String checkIn, String checkOut) throws SQLException {
-
+	public static void findHotelPrices(Connection connection, String location, String checkIn, String checkOut) throws SQLException {
 		String sql = "SELECT date, hotelName, location, SUM(price) AS totalAccommodationCost " +
 				"FROM Hotel " +
 				"WHERE location = ? AND date BETWEEN ? AND DATE(?,'-1 day') " +
 				"GROUP BY hotelName, location " +
 				"HAVING COUNT(DISTINCT date) = ?";
-
-
 		try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 			preparedStatement.setString(1, location);
 			preparedStatement.setString(2, checkIn);
 			preparedStatement.setString(3, checkOut);
 			preparedStatement.setInt(4, countStayDays(checkIn, checkOut));
 			ResultSet resultSet = preparedStatement.executeQuery();
-			printHotelResult(resultSet);
+			printHotelPriceResult(resultSet);
 		}
 	}
 
-	private static void printHotelResult(ResultSet resultSet) throws SQLException {
+	private static void printHotelPriceResult(ResultSet resultSet) throws SQLException {
 		if (resultSet.next()) {
 			do {
 				String hotelName = resultSet.getString("hotelName");

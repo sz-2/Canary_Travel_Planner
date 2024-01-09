@@ -36,7 +36,7 @@ public class XoteloSupplier implements HotelPriceSupplier {
 					JSONObject hotelPrice = hotelPricesJsonList.getJSONObject(index);
 					String agency = hotelPrice.getString("name");
 					float price = hotelPrice.getFloat("rate");
-					hotelPrices.add(new HotelPrice(this.ss, agency, price, stringToInstant(checkInDate), hotel));
+					hotelPrices.add(new HotelPrice(this.ss, agency, price, stringDateToInstant(checkInDate), hotel));
 				}
 			}
 		}
@@ -61,7 +61,7 @@ public class XoteloSupplier implements HotelPriceSupplier {
 		return String.format("https://data.xotelo.com/api/rates?hotel_key=%s&chk_in=%s&chk_out=%s&currency=EUR", hotelKey, checkInDate, checkOutDate);
 	}
 
-	private Instant stringToInstant(String dateString) {
+	private Instant stringDateToInstant(String dateString) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.parse(dateString, formatter);
 		return localDate.atStartOfDay().toInstant(ZoneOffset.UTC);

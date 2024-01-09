@@ -17,21 +17,10 @@ public class ClientRequest {
 		this.datamartManagerBuilder = datamartManagerBuilder;
 	}
 
-	private static boolean askUserToContinue(Scanner scanner) {
-		System.out.print("Do you want to continue? (yes/no): ");
-		String userInput = scanner.nextLine().toLowerCase();
-		if (userInput.equals("no")) {
-			System.out.println("Exiting the application.");
-			return false;
-		}
-		System.out.println("------------------------------------------------------------------------");
-		return true;
-	}
-
 	public void execute() {
 		do {
 			datamartManagerBuilder.readFromDatamart(this.getQueryParameters());
-		} while (askUserToContinue(scanner));
+		} while (this.askUserToContinue(scanner));
 		scanner.close();
 		System.exit(0);
 	}
@@ -77,5 +66,15 @@ public class ClientRequest {
 			}
 		} while (!destinosDisponibles.contains(destino));
 		return destino;
+	}
+	private boolean askUserToContinue(Scanner scanner) {
+		System.out.print("Do you want to continue? (yes/no): ");
+		String userInput = scanner.nextLine().toLowerCase();
+		if (userInput.equals("no")) {
+			System.out.println("Exiting the application.");
+			return false;
+		}
+		System.out.println("------------------------------------------------------------------------");
+		return true;
 	}
 }

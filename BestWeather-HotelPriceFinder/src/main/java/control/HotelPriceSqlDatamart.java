@@ -13,8 +13,8 @@ import java.time.format.DateTimeFormatter;
 
 
 public class HotelPriceSqlDatamart {
-	public static void updateHotel(Statement statement, String event) throws SQLException {
-		createHotelTable(statement);
+	public static void updateHotelPrice(Statement statement, String event) throws SQLException {
+		createHotelPriceTable(statement);
 		HotelPrice hotelPrice = getHotelPriceFromEvent(event);
 		statement.execute(String.format(
 				"INSERT OR REPLACE INTO Hotel (date, hotelName, location, island, agency, price) " +
@@ -45,11 +45,11 @@ public class HotelPriceSqlDatamart {
 		String islandName = hotel.getJSONObject("hotel").getString("island").toLowerCase();
 		String agency = hotel.getString("agency").toLowerCase();
 		float price = hotel.getFloat("price");
-		String date = getDate(hotel.getString("date"));
+		String date = stringDateFormatter(hotel.getString("date"));
 		return new HotelPrice(hotelName, agency, price, date, new Location(locationName, islandName));
 	}
 
-	private static void createHotelTable(Statement statement) throws SQLException {
+	private static void createHotelPriceTable(Statement statement) throws SQLException {
 		statement.execute("CREATE TABLE IF NOT EXISTS Hotel " +
 				"(" +
 				"date TEXT," +
@@ -67,7 +67,7 @@ public class HotelPriceSqlDatamart {
 		statement.execute(String.format("DELETE FROM Hotel WHERE date < '%s';", today));
 	}
 
-	private static String getDate(String date) {
+	private static String stringDateFormatter(String date) {
 		Instant dateInstant = Instant.parse(date);
 		return DateTimeFormatter.ofPattern("yyyy-MM-dd")
 				.withZone(ZoneId.systemDefault())

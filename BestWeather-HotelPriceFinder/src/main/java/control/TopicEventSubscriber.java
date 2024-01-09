@@ -10,9 +10,9 @@ public class TopicEventSubscriber implements EventSupplier {
 	private final String brokerURL;
 	private final List<String> topicNames;
 	private final List<String> clientsID;
-	private final SqlDatamartManager datamartManager;
+	private final DatamartManagerBuilder datamartManager;
 
-	public TopicEventSubscriber(String brokerURL, List<String> topicNames, List<String> clientsID, SqlDatamartManager datamartManager) {
+	public TopicEventSubscriber(String brokerURL, List<String> topicNames, List<String> clientsID, DatamartManagerBuilder datamartManager) {
 		this.brokerURL = brokerURL;
 		this.topicNames = topicNames;
 		this.clientsID = clientsID;

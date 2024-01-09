@@ -31,7 +31,7 @@ public class WeatherSqlDatamart {
 
 	private static Weather getWeatherFromEvent(String event) {
 		JSONObject weather = new JSONObject(event);
-		String date = getDate(weather.getString("predictionTime"));
+		String date = stringDateFormatter(weather.getString("predictionTime"));
 		String location = weather.getJSONObject("location").getString("name").toLowerCase();
 		String island = weather.getJSONObject("location").getString("island").toLowerCase();
 		float temperature = weather.getFloat("temperature");
@@ -60,7 +60,7 @@ public class WeatherSqlDatamart {
 		statement.execute(String.format("DELETE FROM Weather WHERE date < '%s';", today));
 	}
 
-	private static String getDate(String date) {
+	private static String stringDateFormatter(String date) {
 		Instant dateInstant = Instant.parse(date);
 		return DateTimeFormatter.ofPattern("yyyy-MM-dd")
 				.withZone(ZoneId.systemDefault())

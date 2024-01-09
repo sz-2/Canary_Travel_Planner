@@ -15,7 +15,6 @@ public class BestWeatherLocationFinder {
 				"GROUP BY location " +
 				"ORDER BY avg_temperature DESC, avg_clouds ASC, avg_rain ASC " +
 				"LIMIT 1";
-
 		try (PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
 			preparedStatement.setString(1, island);
 			preparedStatement.setString(2, checkIn);

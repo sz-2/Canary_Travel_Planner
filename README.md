@@ -31,22 +31,24 @@ On the following page, you will find the getting started guide and installation 
 
 ### Weather Prediction Provider
 #### Class diagram
-![]()
+![](WeatherPredictionProvider.jpg)
 #### Execution of the program
 
 ****
 
 ### Hotel Price Provider
 #### Class diagram
-![]()
+![](HotelPriceProvider.jpg)
 #### Execution of the program
 
 
 ****
 
 ### Data-Lake Builder
+This Java application will systematically store consumed events from a broker in a directory. The events will be stored in the following format, **{YYYYMMDD}.events**,
+where **YYYYMMDD** is the year-month-day obtained from the event's timestamp in which the events associated with a specific day are stored and **.events** is the fi
 #### Class diagram
-![]()
+![](DatalakeBuilder.jpg)
 #### Execution of the program
 
 
@@ -54,7 +56,7 @@ On the following page, you will find the getting started guide and installation 
 
 ### Best Weather and Hotel-Price Finder
 #### Class diagram
-![]()
+![](BestWeather_HotelPrice_Finder.jpg)
 #### Execution of the program
 
 </div>

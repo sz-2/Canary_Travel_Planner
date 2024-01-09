@@ -39,10 +39,10 @@ public class HotelPriceSqlDatamart {
 
 	private static HotelPrice getHotelPriceFromEvent(String event) {
 		JSONObject hotel = new JSONObject(event);
-		String hotelName = hotel.getJSONObject("hotel").getString("hotelName");
-		String locationName = hotel.getJSONObject("hotel").getString("location");
-		String islandName = hotel.getJSONObject("hotel").getString("island");
-		String agency = hotel.getString("agency");
+		String hotelName = hotel.getJSONObject("hotel").getString("hotelName").toLowerCase();
+		String locationName = hotel.getJSONObject("hotel").getString("location").toLowerCase();
+		String islandName = hotel.getJSONObject("hotel").getString("island").toLowerCase();
+		String agency = hotel.getString("agency").toLowerCase();
 		float price = hotel.getFloat("price");
 		String date = getDate(hotel.getString("date"));
 		return new HotelPrice(hotelName, agency, price, date, new Location(locationName, islandName));

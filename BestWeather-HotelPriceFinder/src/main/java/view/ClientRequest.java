@@ -18,7 +18,10 @@ public class ClientRequest {
 	}
 
 	public void execute(){
-		datamartManagerBuilder.readFromDatamart(this.getQueryParameters());
+		do{
+			datamartManagerBuilder.readFromDatamart(this.getQueryParameters());
+		}while (askUserToContinue(scanner));
+		System.exit(0);
 	}
 
 	private List<String> getQueryParameters(){
@@ -51,17 +54,27 @@ public class ClientRequest {
 	}
 
 	private String captureAndValidateDestiny() {
-		List<String> destinosDisponibles = List.of("Tenerife", "Gran Canaria", "Lanzarote", "Fuerteventura",
-				"La Palma", "La Gomera", "El Hierro", "La Graciosa");
+		List<String> destinosDisponibles = List.of("tenerife", "gran canaria", "lanzarote", "fuerteventura",
+				"la palma", "la gomera", "el hierro", "la graciosa");
 		String destino;
 		do {
 			System.out.print("Enter the Canary Island name: ");
-			destino = scanner.nextLine();
+			destino = scanner.nextLine().toLowerCase();
 			if (!destinosDisponibles.contains(destino)) {
 				System.out.println("Invalid destination. Please choose a Canary Island");
 			}
 		} while (!destinosDisponibles.contains(destino));
-
 		return destino;
+	}
+
+	private static boolean askUserToContinue(Scanner scanner) {
+		System.out.print("Do you want to continue? (yes/no): ");
+		String userInput = scanner.nextLine().toLowerCase();
+		if (userInput.equals("no")) {
+			System.out.println("Exiting the application.");
+			return false;
+		}
+		System.out.println("------------------------------------------------------------------------");
+		return true;
 	}
 }

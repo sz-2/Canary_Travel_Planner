@@ -32,8 +32,8 @@ public class WeatherSqlDatamart {
 	private static Weather getWeatherFromEvent(String event) {
 		JSONObject weather = new JSONObject(event);
 		String date = getDate(weather.getString("predictionTime"));
-		String location = weather.getJSONObject("location").getString("name");
-		String island = weather.getJSONObject("location").getString("island");
+		String location = weather.getJSONObject("location").getString("name").toLowerCase();
+		String island = weather.getJSONObject("location").getString("island").toLowerCase();
 		float temperature = weather.getFloat("temperature");
 		float rain = weather.getFloat("rain");
 		float clouds = weather.getFloat("clouds");

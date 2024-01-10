@@ -9,10 +9,12 @@
 ***
 
 ### Summary of functionality
+This Java application is designed to retrieve meteorological data from different locations across the eight Canary Islands, as well as hotel prices from those locations. 
+The goal is to provide a list of hotels with prices for a specific stay in the location with the best weather on the chosen Canary Island.
 
-This Java application is designed to retrieve meteorological data from the eight Canary Islands and store them in a directory.
-For this purpose, three modules are used: one for data capture (Weather Provider), another for storage (Event Store Builder), and a broker
-that serves as an intermediary, managing the transmission of events between the preceding modules
+It consists of five modules: one for capturing meteorological data (Weather Provider), another for capturing hotel price data (Hotel Price Provider), another for storing events 
+to maintain a historical record of all captured events for auditing purposes (DatalakeBuilder), a broker that serves as an intermediary 
+managing event transmission between the aforementioned modules, and finally, a module responsible for handling the view and responding to client queries(Best Weather and Hotel-Price Finder).
 
 ****
 
@@ -30,7 +32,7 @@ On the following page, you will find the getting started guide and installation 
 ****
 
 ### Weather Prediction Provider
-This Java application is designed to collect predictive weather data for the 8 Canary Islands every 6 hours. To achieve this, an
+This Java application is designed to collect predictive weather data of different locations for the 8 Canary Islands every 6 hours. To achieve this, an
 Open Weather Map REST API has been utilized, allowing us to retrieve predictive data for the next 4 days from the time
 of the query, at 3-hour intervals. In this case, only predictions corresponding to 12 PM have been selected.
 
@@ -56,11 +58,11 @@ command: **java -jar YourApp.jar arg1 arg2 arg3**.
 ****
 
 ### Hotel Price Provider
-This Java application is designed to collect information about the prices of a specific hotel for a particular day from different platforms where it is available every six hours. 
+This Java application is designed to gather information every six hours about hotel prices from various platforms for the next 5 days.
 Subsequently, this information will be serialized in JSON format and sent to the topic of a broker.
 
 #### Execution of the program
-This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and finally and secondly the path where the file with the information of the 
+This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and secondly the file path where the information of the 
 hotels is located (name, location, island, and code) in order to make requests to the API.
 
 To run this program, access the terminal of your operating system, then navigate to the folder where the JAR is located, and finally, enter the following

@@ -90,10 +90,13 @@ command: **java -jar YourApp.jar arg1 arg2**.
 ****
 
 ### Best Weather and Hotel-Price Finder
+This application will provide a list of hotels in the best climatic location of the selected Canary Island and the total price of the stay in each of the available hotels for that location during 
+the specified range of days in the query, up to a maximum of 5 days.
 
 #### Execution of the program
 This program requires 2 arguments for its execution. Firstly, the URL of the broker to which it will connect and finally and secondly the path where the Datamart will be created, 
 it is necessary to specify in that path the name of the datamart that we want to assign and that it ends with the extension **.db**, like this example, **C:/Users/Documents/datamart_name.db**.
+Very important, it cannot run in the background as the terminal needs to be available to input the necessary parameters for the query.
 
 To run this program, access the terminal of your operating system, then navigate to the folder where the JAR is located, and finally, enter the following
 command: **java -jar YourApp.jar arg1 arg2**.
